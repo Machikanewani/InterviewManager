@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{this :: title}, ~{this :: body})}">
+<head>
+    <title>List | Interview Manager</title>
+
+    <script>
+      let text = "";
+      let link;
+    </script>
+</head>
+
+<body>
+
+<div class="mt-5">
+    <a th:href="@{/}">
+        <i class='far fa-arrow-alt-circle-left' style='font-size:36px'></i>
+    </a>
+</div>
+
+<div class="mt-3" style="text-align: center">
+    <a href="createInterview.html" class="btn btn-primary" th:href="@{interviews/create}">Create New Interview</a>
+</div>
+
+<ul id="list" style="display: none">
+    <li class="text-center mt-3" th:each="interview, st :${interviews}">
+        <hr style="margin: 0 auto; color: DarkGreen" size = "5">
+
+        <div class="mt-3">
+            <p class="companyBoard text-center" style="font-size: 1.8 rem" th:text="${interview.companyName}">(company name)</p>
+            <script th:inline="javascript">
+                text = "";
+                link = [[${interview.link}]];
+                if(link != null){
+                  text += "<a href=\"" + link + "\" class=\"center mt-3\" target=\"_blank\" rel=\"noopener noreferrer\"> My Page </a>";
+                }
+                document.write(text);
+            </script>
+
+            <div th:each="block: ${interview.blocks}">
+                <img style="margin: 0 auto;" th:src="@{/images/down.png}">
+
+                <p class="blockBoard" th:text="${block.blockName}">(block name)</p>
+                <p style="color: red" class="mt-2" th:text="${block.date}">(date)</p>
+
+                <div class="acco mt-4">
+                    <div class="accordion">
+                        <p>Memo</p>
+                    </div>
+                    <div class="panel">
+                        <p th:text="${block.memo}">(memo)</p>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                var acc = document.getElementsByClassName('accordion');
+                var i;
+                for ( i = 0; i < acc.length; i++ ){
+                  acc[i].onclick = function() {
+                    this.classList.toggle('active');
+                    var panel = this.nextElementSibling;
+                    if ( panel.style.maxHeight ){
+                      panel.style.maxHeight = null;
+                    } else {
+                     panel.style.maxHeight = panel.scrollHeight + 'px';
+                    }
+                  }
+                }
+            </script>
+        </div>
+
+        <div class="mt-3">
+            <a href="editCompany.html" class="btn btn-primary" th:href="@{/edit/{companyId}(companyId=${interview.companyId})}">
+                Edit
+            </a>
+
+            <a class="btn btn-danger" th:href="@{/delete/company/{companyId}(companyId=${interview.companyId})}">Delete Interview Flow</a>
+        </div>
+
+    </li>
+</ul>
+
+<script th:inline="javascript">
+    var element = document.getElementById("list");
+
+    if(element.innerHTML.length == 6){
+      text = "<div class=\"mt-5\" style=\"text-align: center\"> <h3>You haven't created any interview flow! <br> Let's try it out!</h3></div>";
+      document.write(text);
+    }
+    else{
+      element.style.display = 'block';
+    }
+</script>
+
+
+</body>
+</html>

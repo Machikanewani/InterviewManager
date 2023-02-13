@@ -1,0 +1,111 @@
+.companyBoard{
+  display: block;
+  width: 300px;
+  text-align: center;
+  border-radius: 21px;
+  padding: 0.5em;
+  background-color: #97b5ee;
+  color: white;
+}
+
+.blockBoard{
+  display: block;
+  width: 200px;
+  text-align: center;
+  border-radius: 21px;
+  padding: 0.5em;
+  background-color: #C7EED4;
+  color: black;
+}
+
+div{
+  margin: 0 auto;
+}
+
+p{
+  margin: 0 auto;
+}
+
+.center{
+  margin: 0 auto;
+}
+
+div.accordion {
+    display: block;
+    line-height: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.5s ease-in;
+    position: relative;
+    height: 53px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #FFF;
+    margin-bottom: 15px;
+    font-weight: 600;
+    width: 40%;
+    text-align: center;
+}
+.accordion:before {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    background: #313131;
+    color: #fff;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+.accordion.active {
+    margin-bottom: 0;
+}
+div.panel{
+  max-height:0;
+  overflow:hidden;
+  transition: 0.3s ease-out;
+  width: 40%;
+}
+.panel p {
+    padding: 10px 20px;
+    background: #fafafa;
+    margin: 0 0 15px;
+    position:relative;
+}
+.panel p:before {
+    position: absolute;
+    left: 15px;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 21px;
+    background: #e80000;
+    color: #fff;
+    border-radius: 50%;
+}
+.acco{
+  position:relative;
+}
+div.accordion:hover{
+  background-color: #ddd;
+}
+div.accordion:after {
+    font-size: 1rem;
+    color: #777;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-46%);
+}
+div.accordion.active:after {
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{this :: title}, ~{this :: body})}">
+<head>
+    <title>Top Page | Interview Manager</title>
+</head>
+
+<body>
+
+    <fieldset style="border: 1px solid #ff6699; font-size: 100%; padding: 20px">
+        <legend>タイトル</legend>
+        ここに本文を入れます♪
+    </fieldset>
+
+<div class="mt-4" style="text-align: center">
+    <a href="list.html" class="btn btn-primary" th:href="@{/interviews}">Show Interviews</a>
+</div>
+
+
+</body>
+</html>

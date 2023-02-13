@@ -1,0 +1,63 @@
+package com.example.InterviewManager.web.interviews;
+
+import com.example.InterviewManager.domain.BlockEntity;
+import com.example.InterviewManager.domain.InterviewService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/interviews")
+@RequiredArgsConstructor
+public class InterviewsController {
+    private final InterviewService interviewService;
+
+    @GetMapping
+    public String showList(Model model){
+        model.addAttribute("interviews", interviewService.findAll());
+        return "/interviews/list.html";
+    }
+
+    @GetMapping("/create")
+    public String showCreationForm(Model model){
+        model.addAttribute("interview", new InterviewEntity());
+        return "/interviews/createInterview.html";
+    }
+
+    @PostMapping("/postCompany")
+    public String getPostCompany(@Validated InterviewEntity interviewEntity, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            return showCreationForm(model);
+        }
+        interviewService.createCompany(interviewEntity.getCompanyName(), interviewEntity.getLink());
+        var companyId = interviewService.getCompanyId(interviewEntity.getCompanyName());
+
+        return "redirect:/interviews/newPart/" + companyId;
+    }
+
+    @GetMapping("/newPart/{companyId}")
+    public String showNewPart(@PathVariable long companyId, Model model){
+        BlockEntity blockEntity = new BlockEntity();
+        blockEntity.setWhichCompanyId(companyId);
+
+        model.addAttribute("blockEntity", blockEntity);
+
+        return "/interviews/createPart.html";
+    }
+
+    @PostMapping("/newPart/{companyId}")
+    public String getNewPart(@PathVariable long companyId, BlockEntity blockEntity,
+                             BindingResult bindingResult,Model model){
+        blockEntity.setWhichCompanyId(companyId);
+        interviewService.createBlock(blockEntity);
+
+        return "redirect:/interviews/newPart/" + companyId;
+    }
+
+}

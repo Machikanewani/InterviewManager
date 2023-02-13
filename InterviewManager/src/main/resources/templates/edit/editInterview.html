@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{this :: title}, ~{this :: body})}">
+<head>
+    <title>Edit Company Information | Interview </title>
+</head>
+
+<body>
+
+<div class="mt-5">
+    <a th:href="@{/interviews}">
+        <i class='far fa-arrow-alt-circle-left' style='font-size:36px'></i>
+    </a>
+</div>
+
+<form th:action="@{/edit/{companyId}(companyId=${interviewEntity.companyId})}" th:method="put" th:object="${interviewEntity}">
+    <div class="mt-3">
+        <label for="companyName" class="form-label">Company Name</label>
+        <input type="text" id="companyName" class="form-control" required="required" th:value="*{companyName}" th:field="*{companyName}">
+    </div>
+
+    <div class="mt-3">
+        <label for="link" class="form-label">Link</label>
+        <input type="url" id="link" class="form-control" th:value="*{link}" th:field="*{link}">
+    </div>
+
+    <ol>
+        <li class="mt-3" th:each="block, st: *{blocks}">
+            <hr style="margin: 0 auto; color: DarkGreen" size = "5">
+
+            <input type="text" style="display: none" th:value="${block.id}" th:field="*{blocks[__${st.index}__].id}">
+            <input type="text" style="display: none" th:value="${block.whichCompanyId}" th:field="*{blocks[__${st.index}__].whichCompanyId}">
+
+            <div class="mt-3">
+                <label class="form-label" th:for="|blockName${st.index}|">Block Name</label>
+                <input type="text" th:id="|blockName${st.index}|" class="form-control" required="required"
+                       th:value="${block.blockName}" th:field="*{blocks[__${st.index}__].blockName}">
+            </div>
+
+            <div class="mt-3">
+                <label class="form-label" th:for="|date${st.index}|">Date</label>
+                <input type="date" th:id="|date${st.index}|" class="form-control"
+                       th:value="${block.date}" th:field="*{blocks[__${st.index}__].date}">
+            </div>
+
+            <div class="mt-3">
+                <label class="form-label" th:for="|memo${st.index}|">Memo</label>
+                <textarea th:id="|memo${st.index}|" class="form-control"
+                          th:value="${block.memo}" th:field="*{blocks[__${st.index}__].memo}"></textarea>
+            </div>
+
+            <div class="mt-3">
+<!--                <a class="btn btn-danger" th:href="@{/delete/block/{companyId}(companyId=${interviewEntity.companyId})/{blockId}(blockId=${block.id})}">-->
+                <a class="btn btn-danger" th:href="@{|/delete/block/${interviewEntity.companyId}/${block.id}|}">
+                    Delete Block
+                </a>
+            </div>
+
+            <div class="mt-3" th:if="${st.last}">
+                <a class="btn btn-primary"  style="float: right" th:href="@{/interviews/newPart/{companyId}(companyId=${interviewEntity.companyId})}">Add New Part</a>
+            </div>
+        </li>
+    </ol>
+
+    <div class="mt-3">
+        <button type="submit" class="mx-3 btn btn-success">Edit</button>
+        <a class="mx-3 btn btn-secondary" th:href="@{/interviews}">Cancel</a>
+    </div>
+</form>
+
+</body>
+</html>
