@@ -23,11 +23,11 @@
 </div>
 
 <ul id="list" style="display: none">
-    <li class="text-center mt-3" th:each="interview, st :${interviews}">
+    <li class="text-center mt-5" th:each="interview, st :${interviews}">
         <hr style="margin: 0 auto; color: DarkGreen" size = "5">
 
         <div class="mt-3">
-            <p class="companyBoard text-center" style="font-size: 1.8 rem" th:text="${interview.companyName}">(company name)</p>
+            <p class="companyBoard text-center" style="font-size: 150%;" th:text="${interview.companyName}">(company name)</p>
             <script th:inline="javascript">
                 text = "";
                 link = [[${interview.link}]];
@@ -38,12 +38,12 @@
             </script>
 
             <div th:each="block: ${interview.blocks}">
-                <img style="margin: 0 auto;" th:src="@{/images/down.png}">
+                <img class="mt-3" style="margin: 0 auto;" th:src="@{/images/down.png}">
 
-                <p class="blockBoard" th:text="${block.blockName}">(block name)</p>
+                <p class="blockBoard mt-4" th:text="${block.blockName}">(block name)</p>
                 <p style="color: red" class="mt-2" th:text="${block.date}">(date)</p>
 
-                <div class="acco mt-4">
+                <div class="acco mt-5">
                     <div class="accordion">
                         <p>Memo</p>
                     </div>
@@ -71,11 +71,11 @@
         </div>
 
         <div class="mt-3">
-            <a href="editCompany.html" class="btn btn-primary" th:href="@{/edit/{companyId}(companyId=${interview.companyId})}">
+            <a href="editCompany.html" class="btn btn-primary mx-3" th:href="@{/edit/{companyId}(companyId=${interview.companyId})}">
                 Edit
             </a>
 
-            <a class="btn btn-danger" th:href="@{/delete/company/{companyId}(companyId=${interview.companyId})}">Delete Interview Flow</a>
+            <a class="btn btn-danger mx-3" th:href="@{/delete/company/{companyId}(companyId=${interview.companyId})}">Delete Interview Flow</a>
         </div>
 
     </li>
