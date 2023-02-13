@@ -7,10 +7,35 @@
 
 <body>
 
-    <fieldset style="border: 1px solid #ff6699; font-size: 100%; padding: 20px">
-        <legend>タイトル</legend>
-        ここに本文を入れます♪
-    </fieldset>
+<fieldset id="tag" class="mt-5" style="border: 2px solid; border-color: #198754; font-size: 120%; padding: 20px;">
+    <legend style="text-align: center">Info</legend>
+    <ul >
+        <li class="mt-2">
+            This site is aimed to help graduates to manage their interviews during job hunting
+        </li>
+
+        <li class="mt-2">
+            Click "Show Interviews" to show current interview list you have created and can also create an entire new
+            interview flow
+        </li>
+
+        <li class="mt-2">
+            At interview list page, you can either edit a particular flow or delete it as a whole
+        </li>
+
+        <li class="mt-2">
+            When editing a single interview flow, you can edit everything you entered before including company name,
+            interview date, etc. Besides it, you can also add new part of the interview after the last part
+            <br>
+            <span style="color: red; font-size: 80%;">
+                * Notice all changes you have made would disappear after clicking the "Add New Part" button!
+            </span>
+        </li>
+    </ul>
+
+    <br>
+
+</fieldset>
 
 <div class="mt-4" style="text-align: center">
     <a href="list.html" class="btn btn-primary" th:href="@{/interviews}">Show Interviews</a>

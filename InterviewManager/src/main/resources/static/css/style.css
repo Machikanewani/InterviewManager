@@ -109,3 +109,15 @@ div.accordion:after {
 }
 div.accordion.active:after {
 }
+
+legend{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  display: block;
+  padding-inline-start: 2px;
+  padding-inline-end: 2px;
+}
