@@ -15,6 +15,11 @@ Help to manage your interviews' progress.
 * Index page would show usage of this interview manager site and a button linked to interview list.
 <img src="https://user-images.githubusercontent.com/85107247/218411225-25d40f33-ddac-484e-87e5-856414019666.jpg" width="800px">
 
+* When you try to enter the list page for the first time, you will be asked to authenticate with your Google account. Once you choose an account and sign in, the interview flow will be displayed at the list page.
+
+
+<img src="https://user-images.githubusercontent.com/85107247/221573171-3cd63ba5-e611-4c99-8427-0b6a78ae6f71.png" width="600px">
+
 * At the list page, page is shown as below when there is no interview flow created.
 <img src="https://user-images.githubusercontent.com/85107247/218412407-25f0ddbf-bd61-42a5-91b6-64a7cfb6f267.png" width="800px">
 
