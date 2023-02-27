@@ -6,14 +6,14 @@ import java.util.List;
 
 @Mapper
 public interface InterviewRepository {
-    @Select("select * from companies")
-    List<CompanyEntity> findAllCompanies();
+    @Select("select * from companies where userId = #{userId}")
+    List<CompanyEntity> findAllCompanies(long userId);
 
     @Select("select * from flowBlocks where whichCompanyId = #{companyId} order by id")
     List<BlockEntity> findAllBlocksByCompany(long companyId);
 
-    @Insert("insert into companies (name, link) values (#{companyName}, #{link})")
-    void insertCompany(String companyName, String link);
+    @Insert("insert into companies (userId, name, link) values (#{userId}, #{companyName}, #{link})")
+    void insertCompany(Long userId, String companyName, String link);
 
     @Select("select id from companies where name = #{companyName}")
     long getCompanyId(String companyName);
@@ -40,4 +40,10 @@ public interface InterviewRepository {
 
     @Delete("delete from flowBlocks where id = #{blockId}")
     void deleteBlock(long blockId);
+
+    @Select("select id from users where email = #{email}")
+    Long getUserIdByEmail(String email);
+
+    @Insert("insert into users (email, iconURL) values (#{email}, #{picture})")
+    void insertUser(String email, String picture);
 }
