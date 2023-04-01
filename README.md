@@ -38,3 +38,7 @@ just clicking once.
  Besides, you can choose to delete a single part of interview or just give up edition with `Cancel` button. Every buttons except for `Edit` you click would make your changes disappear, so please click somthing with much attention.
 <img src="https://user-images.githubusercontent.com/85107247/218417563-83b6c80a-4019-4b13-9748-5c6f9df9a72a.jpg" width="800px">
 
+## New Added feature
+
+* If you enter a datetime of an interview or a dead line of a submission(e.g. entry sheet, coding test...), an reminding email will be send one day before that datetime to your gmail. Don't forget to check!
+
