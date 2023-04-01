@@ -27,7 +27,7 @@ public class EditController {
     @PutMapping("/{companyId}")
     public String getEditInterview(@AuthenticationPrincipal OidcUser user, @PathVariable long companyId, InterviewEntity interviewEntity, BindingResult bindingResult, Model model){
         interviewService.editCompany(companyId, interviewEntity.getCompanyName(), interviewEntity.getLink());
-        interviewService.editBlocks(interviewEntity.getBlocks());
+        interviewService.editBlocks(user, interviewEntity.getBlocks());
         return "redirect:/interviews";
     }
 }

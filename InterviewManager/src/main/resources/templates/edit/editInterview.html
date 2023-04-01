@@ -39,9 +39,11 @@
 
             <div class="mt-3">
                 <label class="form-label" th:for="|date${st.index}|">Date</label>
-                <input type="date" th:id="|date${st.index}|" class="form-control"
-                       th:value="${block.date}" th:field="*{blocks[__${st.index}__].date}">
+                <input type="datetime-local" th:id="|date${st.index}|" class="form-control"
+                       th:value="${block.dateTime}" th:field="*{blocks[__${st.index}__].dateTime}">
             </div>
+
+
 
             <div class="mt-3">
                 <label class="form-label" th:for="|memo${st.index}|">Memo</label>

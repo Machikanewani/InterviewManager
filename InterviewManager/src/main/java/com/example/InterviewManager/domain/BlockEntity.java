@@ -9,7 +9,7 @@ public class BlockEntity {
     private long id;
     private long whichCompanyId;
     private String blockName;
-    private String date;
+    private String dateTime;
     private String memo;
 
     public BlockEntity(){}

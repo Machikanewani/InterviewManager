@@ -1,6 +1,7 @@
 package com.example.InterviewManager.web.delete;
 
 import com.example.InterviewManager.domain.InterviewService;
+import com.example.InterviewManager.domain.mail.EmailScheduler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class DeleteController {
     private final InterviewService interviewService;
+    private final EmailScheduler emailScheduler;
 
     @GetMapping("/company/{companyId}")
     public String deleteCompany(@AuthenticationPrincipal OidcUser user, @PathVariable long companyId){
         interviewService.deleteEntireInterview(companyId);
-
         return "redirect:/interviews";
     }
 

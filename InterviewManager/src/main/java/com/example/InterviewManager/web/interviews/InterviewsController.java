@@ -61,7 +61,7 @@ public class InterviewsController {
     public String getNewPart(@AuthenticationPrincipal OidcUser user, @PathVariable long companyId, BlockEntity blockEntity,
                              BindingResult bindingResult,Model model){
         blockEntity.setWhichCompanyId(companyId);
-        interviewService.createBlock(blockEntity);
+        interviewService.createBlock(user, blockEntity);
 
         return "redirect:/interviews/newPart/" + companyId;
     }

@@ -18,8 +18,14 @@
 
         <div class="mt-3">
             <label for="date" class="form-label">Date</label>
-            <input type="date" id="date" class="form-control" th:field="*{date}">
+            <input type="datetime-local" id="date" class="form-control" th:field="*{dateTime}">
         </div>
+
+        <script>
+            let now = new Date();
+            let dateTime = now.toISOString().slice(0, 16);
+            document.getElementById("date").min = dateTime;
+        </script>
 
         <div class="mt-3">
             <label for="memo" class="form-label">Memo</label>

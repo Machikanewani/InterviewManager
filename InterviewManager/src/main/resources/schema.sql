@@ -16,7 +16,7 @@ create table flowBlocks(
   id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   whichCompanyId BIGINT,
   blockName VARCHAR(64) NOT NULL,
-  date VARCHAR(32),
+  dateTime VARCHAR(32),
   memo VARCHAR(128),
   FOREIGN KEY(whichCompanyId) REFERENCES companies(id)
 );
